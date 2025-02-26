@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,6 @@ import com.alex.springapp.service.JobsService;
 public class JobsController {
     @Autowired
     JobsService obj;
-
     @GetMapping("/api/jobs/getAll")
     public ResponseEntity<List<Jobs>> getAllJobs() {
         return new ResponseEntity<>(obj.getAll(), HttpStatus.OK);
