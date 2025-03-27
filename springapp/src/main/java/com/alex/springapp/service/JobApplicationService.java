@@ -10,12 +10,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.alex.springapp.entity.JobApplication;
+import com.alex.springapp.entity.Jobs;
 import com.alex.springapp.repository.JobApplicationRepo;
+import com.alex.springapp.repository.JobsRepo;
 
 @Service
 public class JobApplicationService {
     @Autowired
     JobApplicationRepo obj;
+
+    @Autowired
+    private JobApplicationRepo jobApplicationRepo;
+
+    @Autowired
+    private JobsRepo jobsRepo;
 
     public List<JobApplication> getAll() {
         return obj.findAll();
@@ -68,7 +76,22 @@ public class JobApplicationService {
 
     public List<JobApplication> sort(String field)
     {
-        Sort sort=Sort.by(Sort.Direction.ASC,field);
+        Sort sort = Sort.by(Sort.Direction.ASC, field);
         return obj.findAll(sort);
+    }
+    
+    public JobApplication saveJobApplication(JobApplication jobApplication) {
+        if (jobApplication.getJob() == null || jobApplication.getJob().getId() == 0) {
+            throw new IllegalArgumentException("Job must be provided and exist.");
+        }
+
+        // Fetch existing job from DB
+        Jobs existingJob = jobsRepo.findById(jobApplication.getJob().getId())
+        .orElseThrow(() -> new RuntimeException("Job not found!"));
+        
+        // Set the job reference in the application
+        jobApplication.setJob(existingJob);
+
+        return jobApplicationRepo.save(jobApplication);
     }
 }
