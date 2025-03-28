@@ -20,7 +20,7 @@ public class JobApplication {
     public String name;
 
     @ManyToOne
-    @JoinColumn(name = "jobSeeker_id", referencedColumnName = "Id", nullable = false)
+    @JoinColumn(name = "jobSeeker_id", referencedColumnName = "id", nullable = false)
     private JobSeeker jobseeker;
 
     @ManyToOne(optional = false)

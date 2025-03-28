@@ -53,10 +53,10 @@ public class AdminController {
         if (item.isPresent()) {
             return new ResponseEntity<>(item, HttpStatus.OK);
         }
-        Map<String, String> response = new LinkedHashMap<>();
-        response.put("Success", "false");
-        response.put("Message", "id not found");
-        return ResponseEntity.status(404).body(response);
+        // Map<String, String> response = new LinkedHashMap<>();
+        // response.put("Success", "false");
+        // response.put("Message", "id not found");
+        return ResponseEntity.status(404).body("Not found");
     }
     
     @DeleteMapping("admins/delete/{id}")
@@ -65,10 +65,10 @@ public class AdminController {
         if (item.isPresent()) {
             return new ResponseEntity<>(item, HttpStatus.OK);
         }
-        Map<String, String> response = new LinkedHashMap<>();
-        response.put("Success", "false");
-        response.put("Message", "id not found");
-        return ResponseEntity.status(404).body(response);
+        // Map<String, String> response = new LinkedHashMap<>();
+        // response.put("Success", "false");
+        // response.put("Message", "id not found");
+        return ResponseEntity.status(404).body("not found");
     }
 
     

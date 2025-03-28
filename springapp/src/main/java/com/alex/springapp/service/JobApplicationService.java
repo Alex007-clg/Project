@@ -1,5 +1,6 @@
 package com.alex.springapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,9 +11,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.alex.springapp.entity.JobApplication;
+import com.alex.springapp.entity.JobSeeker;
 import com.alex.springapp.entity.Jobs;
 import com.alex.springapp.repository.JobApplicationRepo;
+import com.alex.springapp.repository.JobSeekerRepo;
 import com.alex.springapp.repository.JobsRepo;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class JobApplicationService {
@@ -25,13 +30,19 @@ public class JobApplicationService {
     @Autowired
     private JobsRepo jobsRepo;
 
+    @Autowired
+    private JobSeekerRepo jobseekerRepo;
+
     public List<JobApplication> getAll() {
         return obj.findAll();
     }
 
+    @Transactional
     public JobApplication postJob(JobApplication mess) {
-        return obj.save(mess);
+    
+        return jobApplicationRepo.save(mess);
     }
+    
 
     public Optional<JobApplication> updateData(int id, JobApplication mess) {
         Optional<JobApplication> data = obj.findById(id);

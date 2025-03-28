@@ -3,11 +3,14 @@ package com.alex.springapp.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.data.domain.Pageable;
+// import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+// import org.springframework.data.domain.Sort;
 import com.alex.springapp.entity.Admin;
 import com.alex.springapp.repository.AdminRepo;
 
@@ -76,3 +79,8 @@ public class AdminService {
     }
     
 }
+// Pageable page = PageRequest.of(pageNo,page);
+// obj.findAll(page).getContent();
+
+// Sort sort = Sort.by(Sort.Direction.ASC,field);
+// obj.fin

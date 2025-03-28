@@ -19,7 +19,7 @@ import com.alex.springapp.service.JobsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("api/admins")
+@RequestMapping("api/jobs")
 public class JobsController {
     @Autowired
     JobsService obj;

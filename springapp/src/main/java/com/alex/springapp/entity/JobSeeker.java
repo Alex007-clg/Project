@@ -20,7 +20,7 @@ public class JobSeeker {
     @Column(name = "Id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
+    public Integer id;
     @Column(name = "Name")
     public String name;
     @Column(name="email")
@@ -30,17 +30,18 @@ public class JobSeeker {
     @Column(name="Resume")
     public String resumeUrl;
     @Column(name = "skills")
+    public String skills;
+    
     @OneToMany(mappedBy = "jobseeker", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<JobApplication> jobApplications = new ArrayList<>();
 
-    public String skills;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -94,7 +95,7 @@ public class JobSeeker {
 
     
 
-    public JobSeeker(int id, String name, String email, String phoneNumber, String resumeUrl,
+    public JobSeeker(Integer id, String name, String email, String phoneNumber, String resumeUrl,
             List<JobApplication> jobApplications, String skills) {
         this.id = id;
         this.name = name;
